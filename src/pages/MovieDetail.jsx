@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 
 const MovieDetail = () => {
-  const { id } = useParams(); // Get movie ID from URL params
+  const { id } = useParams(); 
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
