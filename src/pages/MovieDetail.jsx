@@ -12,8 +12,9 @@ const MovieDetail = () => {
       setLoading(true);
       setError(null);
       try {
+        const apiKey = import.meta.env.VITE_TMDB_API_KEY;
         // Replace 'YOUR_TMDB_API_KEY' with your actual TMDB API key
-        const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=YOUR_TMDB_API_KEY&append_to_response=credits,release_dates`);
+        const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&append_to_response=credits,release_dates`);
         const data = await response.json();
         if (data.success === false) { // TMDB uses `success: false` for errors like not found
           setError(data.status_message || 'Movie not found by ID.');
