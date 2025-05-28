@@ -13,16 +13,16 @@ const MovieDetail = () => {
       setError(null);
       try {
         const apiKey = import.meta.env.VITE_TMDB_API_KEY;
-        // Replace 'YOUR_TMDB_API_KEY' with your actual TMDB API key
+       
         const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&append_to_response=credits,release_dates`);
         const data = await response.json();
         if (data.success === false) { // TMDB uses `success: false` for errors like not found
           setError(data.status_message || 'Movie not found by ID.');
           setMovie(null);
         } else {
-           // Extract director from credits
+       
           const director = data.credits?.crew?.find(person => person.job === 'Director');
-          // Extract MPAA rating for US if available
+         
           let mpaaRating = 'N/A';
           const usRelease = data.release_dates?.results?.find(r => r.iso_3166_1 === 'US');
           if (usRelease && usRelease.release_dates.length > 0) {
