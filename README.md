@@ -29,15 +29,5 @@
 
 ---
 
-## Folder Structure
 
-src/
-├── components/
-│   ├── MovieCard.jsx
-│   └── Search.jsx
-├── pages/
-│   ├── Home.jsx
-│   └── MovieDetail.jsx
-├── App.js
-└── index.js
 
