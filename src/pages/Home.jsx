@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import faviLogo from '../assets/favi.png'; // Import the logo
 
 const Home = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -122,9 +123,21 @@ const Home = () => {
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 min-h-screen">
       <header className="pt-8 pb-10 text-center">
-        <h1 className="text-5xl md:text-6xl font-bold text-yellow-400 mb-3 tracking-tight">
-          FlickHunt
-        </h1>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-x-4 gap-y-2 mb-4">
+          <img
+            src={faviLogo}
+            alt="FlickHunt Logo"
+            className="h-12 w-12 md:h-16 md:w-16 transition-all duration-300 ease-in-out hover:scale-110 hover:drop-shadow-[0_0_10px_rgba(250,204,21,0.6)]"
+          />
+          <h1 
+            className="text-5xl md:text-6xl font-bold tracking-tight 
+                       bg-gradient-to-b from-yellow-400 via-yellow-500  to-purple-500 
+                       text-transparent bg-clip-text 
+                       [text-shadow:_0px_0px_8px_rgba(147,112,219,0.2)]"
+          >
+            FlickHunt
+          </h1>
+        </div>
         <p className="text-lg md:text-xl text-gray-400">
           Explore and discover your next favorite movie.
         </p>
@@ -184,7 +197,9 @@ const Home = () => {
             )}
             {!loadingPopular && !errorPopular && popularMovies.length > 0 && (
               <section>
-                <h2 className="text-3xl font-semibold text-yellow-400 mb-6 text-center sm:text-left">Trending Movies</h2>
+                <h2 className="text-3xl font-semibold text-yellow-400 mb-6 text-center sm:text-left [text-shadow:_1px_1px_3px_rgba(147,112,219,0.35)]">
+                  Trending Movies
+                </h2>
                 {renderMovieGrid(popularMovies, 'popular')}
               </section>
             )}
