@@ -156,7 +156,7 @@ const Home = () => {
       {/* Content Area */}
       <div className="mt-6">
         {searchTerm.trim() !== '' ? (
-          // Display Search Results or Search-related messages
+          // Display Search Results or Search-related messages (if search is active)
           <>
             {loading && (
               <div className="text-center py-10">
