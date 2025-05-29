@@ -1,6 +1,7 @@
 export default function Search({ setQuery }) {
   return (
     // search here 
+    // the search component is the search bar that allows the user to search for movies
     <div className="flex justify-center">
       <input
         type="text"
