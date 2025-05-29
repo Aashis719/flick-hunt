@@ -49,6 +49,8 @@ const MovieDetail = () => {
             imdbRating: data.vote_average ? data.vote_average.toFixed(1) : 'N/A',
             imdbVotes: data.vote_count ? data.vote_count.toLocaleString() : 'N/A',
             // TMDB doesn't directly provide multiple "Ratings" sources like OMDB, so we focus on TMDB's own vote average.
+            // TMDB also doesn't provide multiple ratings sources like OMDB, so we focus on TMDB's own vote average. 
+            // Awards are also not a standard direct field in the main movie details like OMDB.
            
           };
           setMovie(formattedMovie);
