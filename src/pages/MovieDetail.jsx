@@ -16,7 +16,7 @@ const MovieDetail = () => {
        
         const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&append_to_response=credits,release_dates`);
         const data = await response.json();
-        if (data.success === false) { // TMDB uses `success: false` for errors like not found
+        if (data.success === false) { // TMDB uses `success: false` for errors 
           setError(data.status_message || 'Movie not found by ID.');
           setMovie(null);
         } else {
@@ -49,7 +49,7 @@ const MovieDetail = () => {
             imdbRating: data.vote_average ? data.vote_average.toFixed(1) : 'N/A',
             imdbVotes: data.vote_count ? data.vote_count.toLocaleString() : 'N/A',
             // TMDB doesn't directly provide multiple "Ratings" sources like OMDB, so we focus on TMDB's own vote average.
-            // Awards are also not a standard direct field in the main movie details like OMDB.
+           
           };
           setMovie(formattedMovie);
         }
