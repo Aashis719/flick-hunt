@@ -203,7 +203,7 @@ const Home = () => {
                 {renderMovieGrid(popularMovies, 'popular')}
               </section>
             )}
-            {/* Fallback: Initial prompt if popular movies are not loading, no error, and no popular movies yet (e.g., API returns empty for some reason) */}
+            {/* Fallback: Initial prompt if popular movies are not loading, no error, and no popular movies yet */}
             {!loadingPopular && !errorPopular && popularMovies.length === 0 && (
               <div className="text-center py-16">
                 <svg className="mx-auto h-16 w-16 text-gray-500" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 15.75l-2.489-2.489" /></svg>
