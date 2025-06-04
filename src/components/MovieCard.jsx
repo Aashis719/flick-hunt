@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 
-
+// MovieCard component to display individual movie details
+// It takes a movie object as a prop and displays its poster, title, and year
 export default function MovieCard({ movie }) {
   return (
     <Link to={`/movie/${movie.imdbID}`}>
