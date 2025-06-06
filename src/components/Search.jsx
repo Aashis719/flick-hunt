@@ -1,6 +1,6 @@
 export default function Search({ setQuery }) {
   return (
-    
+    // src/components/Search.jsx
     <div className="flex justify-center">
       <input
         type="text"
