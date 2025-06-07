@@ -45,7 +45,7 @@ const Home = () => {
     fetchPopularMovies();
   }, [apiKey]); // Depend on apiKey in case it could change (though unlikely for env var)
 
-  // Function to fetch movies from TMDB API
+ 
   const fetchMovies = async (searchQuery) => {
     if (!searchQuery.trim()) {
       setMovies([]);
