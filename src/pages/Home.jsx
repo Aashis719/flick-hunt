@@ -55,7 +55,7 @@ const Home = () => {
     }
     setLoading(true);
     setError(null);
-    setPopularMovies([]); // Clear popular movies when a search is active
+    setPopularMovies([]); 
     try {
       const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${searchQuery}`);
       const data = await response.json();
