@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import faviLogo from '../assets/favi.png'; // Import the logo
+import faviLogo from '../assets/favi.png'; 
 
 const Home = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -14,7 +14,7 @@ const Home = () => {
 
   const apiKey = import.meta.env.VITE_TMDB_API_KEY;
 
-  // Fetch popular movies on component mount
+  
   useEffect(() => {
     const fetchPopularMovies = async () => {
       setLoadingPopular(true);
