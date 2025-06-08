@@ -43,7 +43,7 @@ const Home = () => {
     };
 
     fetchPopularMovies();
-  }, [apiKey]); // Depend on apiKey in case it could change (though unlikely for env var)
+  }, [apiKey]); 
 
  
   const fetchMovies = async (searchQuery) => {
