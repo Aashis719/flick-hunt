@@ -14,8 +14,7 @@ const Home = () => {
 
   const apiKey = import.meta.env.VITE_TMDB_API_KEY;
 
-  // Fetch popular movies on initial load
-  // This will run once when the component mounts
+  
   useEffect(() => {
     const fetchPopularMovies = async () => {
       setLoadingPopular(true);
