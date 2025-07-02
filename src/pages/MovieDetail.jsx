@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-
+// This component fetches and displays detailed information about a specific movie using its ID from the URL
 const MovieDetail = () => {
   const { id } = useParams(); 
   const [movie, setMovie] = useState(null);
