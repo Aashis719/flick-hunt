@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import MovieDetail from './pages/MovieDetail';
-// This is the main App component that sets up the routing for the application
+
 function App() {
   return (
     <BrowserRouter>
