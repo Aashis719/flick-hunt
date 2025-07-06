@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import faviLogo from '../assets/favi.png'; 
-// This is the main page of the application where users can search for movies or view popular movies
 const Home = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [movies, setMovies] = useState([]);
