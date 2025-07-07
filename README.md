@@ -26,7 +26,7 @@
 - **React Router DOM** – Client-side routing
 - **Tailwind CSS** – Utility-first CSS for styling
 - **TMDB API** – Movie data source
-
+ 
 
 
 
