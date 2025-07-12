@@ -10,6 +10,6 @@ export default function MovieCard({ movie }) {
           <p className="text-sm text-gray-400">{movie.Year}</p>
         </div>
       </div>
-    </Link>
+    </Link> 
   );
 }
