@@ -27,6 +27,6 @@
 - **Tailwind CSS** – Utility-first CSS for styling
 - **TMDB API** – Movie data source
   
-
+ 
 
 
