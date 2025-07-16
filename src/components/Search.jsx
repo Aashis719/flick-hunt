@@ -1,5 +1,5 @@
 export default function Search({ setQuery }) {
-  return (
+  return ( 
   
     <div className="flex justify-center">
       <input
