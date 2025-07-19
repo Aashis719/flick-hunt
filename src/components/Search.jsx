@@ -1,7 +1,7 @@
 export default function Search({ setQuery }) {
   return ( 
   
-    <div className="flex justify-center">
+    <div className="flex justify-center"> 
       <input
         type="text"
         placeholder="Search movies..."
