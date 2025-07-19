@@ -31,7 +31,7 @@ const MovieDetail = () => {
                 mpaaRating = certification;
             }
           }
- 
+  
           const formattedMovie = {
             id: data.id,
             Title: data.title,
