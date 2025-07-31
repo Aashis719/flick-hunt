@@ -29,7 +29,7 @@ const MovieDetail = () => {
             const certification = usRelease.release_dates[0].certification;
             if (certification) {
                 mpaaRating = certification;
-            }
+            } 
           }
   
           const formattedMovie = {
