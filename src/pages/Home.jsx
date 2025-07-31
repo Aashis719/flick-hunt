@@ -88,7 +88,7 @@ const Home = () => {
     }, 500);
 
     return () => clearTimeout(delayDebounceFn);  
-  }, [searchTerm, apiKey]); // Add apiKey here too
+  }, [searchTerm, apiKey]); // Add apiKey here too 
 
   // Helper to render a grid of movies (used for both popular and search results) 
   const renderMovieGrid = (movieList, listType = 'search') => (
