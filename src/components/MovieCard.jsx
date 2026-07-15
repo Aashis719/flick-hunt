@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Bookmark, BookmarkCheck, Eye, EyeOff, Star } from 'lucide-react';
 import { useFavorites } from '../hooks/useFavorites';
@@ -30,6 +30,37 @@ export default function MovieCard({ movie, listType = 'default' }) {
   const year = movie.Year || (movie.release_date ? movie.release_date.substring(0, 4) : 'N/A');
   const poster = movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : (movie.Poster !== 'N/A' && movie.Poster ? movie.Poster : null);
   const voteAverage = movie.voteAverage || movie.vote_average;
+  const [imdbRating, setImdbRating] = useState(null);
+
+  useEffect(() => {
+    let isMounted = true;
+    const fetchImdbRating = async () => {
+      try {
+        let externalId = movie.imdbID;
+        if (!externalId) {
+          const apiKey = import.meta.env.VITE_TMDB_API_KEY;
+          const extRes = await fetch(`https://api.themoviedb.org/3/movie/${movie.id}/external_ids?api_key=${apiKey}`);
+          const extData = await extRes.json();
+          externalId = extData.imdb_id;
+        }
+        
+        if (externalId && isMounted) {
+          const omdbRes = await fetch(`https://www.omdbapi.com/?i=${externalId}&apikey=trilogy`);
+          const omdbData = await omdbRes.json();
+          if (omdbData.Response === "True" && omdbData.imdbRating !== "N/A" && isMounted) {
+            setImdbRating(omdbData.imdbRating);
+          }
+        }
+      } catch (err) {
+        // fail gracefully
+      }
+    };
+    
+    if (movie.id || movie.imdbID) fetchImdbRating();
+    return () => { isMounted = false; };
+  }, [movie.id, movie.imdbID]);
+
+  const displayRating = imdbRating || (voteAverage > 0 ? Number(voteAverage).toFixed(1) : null);
 
   const releaseDate = movie.release_date || movie.Year;
   const today = new Date().toISOString().split('T')[0];
@@ -56,10 +87,10 @@ export default function MovieCard({ movie, listType = 'default' }) {
         )}
         
         {/* Rating Badge */}
-        {voteAverage > 0 && (
-          <div className="absolute bottom-2 right-2 bg-gray-900/80 backdrop-blur-sm text-yellow-400 text-xs font-bold px-2 py-1 rounded-full flex items-center shadow-lg border border-gray-700/50">
+        {displayRating && (
+          <div className="absolute bottom-2 right-2 bg-gray-900/80 backdrop-blur-sm text-yellow-400 text-xs font-bold px-2 py-1 rounded-full flex items-center shadow-lg border border-gray-700/50" title="IMDb Rating">
             <Star className="w-3 h-3 mr-1 fill-yellow-400" />
-            {Number(voteAverage).toFixed(1)}
+            {displayRating}
           </div>
         )}
 

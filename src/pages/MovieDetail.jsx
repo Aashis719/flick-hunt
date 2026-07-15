@@ -13,6 +13,8 @@ const MovieDetail = () => {
   const [trailerKey, setTrailerKey] = useState(null);
   const [similarMovies, setSimilarMovies] = useState([]);
   const [imdbId, setImdbId] = useState(null);
+  const [imdbRating, setImdbRating] = useState(null);
+  const [imdbVotes, setImdbVotes] = useState(null);
   const [showTrailer, setShowTrailer] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -60,6 +62,19 @@ const MovieDetail = () => {
         // Get External IDs
         const extData = await extRes.json();
         setImdbId(extData.imdb_id || null);
+
+        if (extData.imdb_id) {
+          try {
+            const omdbRes = await fetch(`https://www.omdbapi.com/?i=${extData.imdb_id}&apikey=trilogy`);
+            const omdbData = await omdbRes.json();
+            if (omdbData.Response === "True") {
+              setImdbRating(omdbData.imdbRating !== "N/A" ? omdbData.imdbRating : null);
+              setImdbVotes(omdbData.imdbVotes !== "N/A" ? omdbData.imdbVotes : null);
+            }
+          } catch (e) {
+            console.error("OMDb fetch failed:", e);
+          }
+        }
 
       } catch (err) {
         console.error("API call failed:", err);
@@ -256,10 +271,10 @@ const MovieDetail = () => {
               <p className="text-lg text-white">{movie.credits?.cast?.slice(0, 5).map(actor => actor.name).join(', ') || 'N/A'}</p>
             </div>
             <div>
-              <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-1">TMDB Rating</h3>
+              <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-1">IMDb Rating</h3>
               <div className="flex items-center gap-2 text-lg text-white">
-                <span className="text-yellow-400 font-bold">{movie.vote_average?.toFixed(1)}/10</span>
-                <span className="text-gray-500 text-sm">({movie.vote_count?.toLocaleString()} votes)</span>
+                <span className="text-yellow-400 font-bold">{imdbRating || movie.vote_average?.toFixed(1)}/10</span>
+                <span className="text-gray-500 text-sm">({imdbVotes || movie.vote_count?.toLocaleString()} votes)</span>
               </div>
             </div>
             <div>
