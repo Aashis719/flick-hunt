@@ -6,7 +6,7 @@ const NotFound = () => {
   return (
     <motion.div 
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      animate={{ opacity: 1 }} 
       exit={{ opacity: 0 }}
       className="flex-grow flex items-center justify-center min-h-[70vh] px-4"
     >
@@ -14,7 +14,7 @@ const NotFound = () => {
         <h1 className="text-9xl font-bold text-yellow-500 mb-4 opacity-80">404</h1>
         <h2 className="text-3xl font-semibold text-gray-200 mb-6">Lost in the cinematic universe...</h2>
         <p className="text-gray-400 mb-8 max-w-md mx-auto text-lg">
-          We couldn't find the page you're looking for. It might have been beamed up by aliens or just moved.
+          We couldn't find the page you're looking for. It might have been beamed up by aliens or just moved
         </p>
         <Link 
           to="/" 
